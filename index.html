@@ -56,9 +56,44 @@
       outline-offset: 4px;
     }
 
+    #boton-amor {
+      margin-top: 0.5rem;
+    }
+
+    #pantalla-amor {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      max-height: none;
+      margin: 0;
+      padding: 1.5rem;
+      border: 0;
+      box-sizing: border-box;
+      background: linear-gradient(135deg, #fff1f5, #fce4ec);
+      color: #ad1457;
+      place-items: center;
+    }
+
+    #pantalla-amor:not([open]) {
+      display: none;
+    }
+
+    #pantalla-amor[open] {
+      display: grid;
+    }
+
+    #pantalla-amor::backdrop {
+      background: #880e4f;
+    }
+
+    #pantalla-amor h2 {
+      margin: 0 0 1.5rem;
+      font-size: clamp(3rem, 12vw, 7rem);
+    }
+
     #abrazo {
-      min-height: 2rem;
-      margin: 1.5rem 0 0;
+      min-height: 0;
+      margin: 0;
       color: #880e4f;
       font-size: 1.2rem;
       font-weight: 600;
@@ -85,10 +120,20 @@
     <h1>Hola Abril te quiero mucho</h1>
     <button id="boton-abrazo" type="button">Te quiero</button>
     <p id="abrazo" aria-live="polite"></p>
+    <button id="boton-amor" type="button">¿Quién es el amor de Abril?</button>
   </main>
+  <dialog id="pantalla-amor" aria-labelledby="titulo-seungmin">
+    <div>
+      <h2 id="titulo-seungmin">Seungmin</h2>
+      <button id="cerrar-pantalla" type="button">Volver</button>
+    </div>
+  </dialog>
   <script>
     const boton = document.querySelector("#boton-abrazo");
     const mensajeAbrazo = document.querySelector("#abrazo");
+    const botonAmor = document.querySelector("#boton-amor");
+    const pantallaAmor = document.querySelector("#pantalla-amor");
+    const botonCerrarPantalla = document.querySelector("#cerrar-pantalla");
 
     boton.addEventListener("click", () => {
       mensajeAbrazo.textContent = "¡Te mando un abrazo enorme! 🤗";
@@ -96,8 +141,14 @@
       void mensajeAbrazo.offsetWidth;
       mensajeAbrazo.classList.add("visible");
     });
+
+    botonAmor.addEventListener("click", () => {
+      pantallaAmor.showModal();
+    });
+
+    botonCerrarPantalla.addEventListener("click", () => {
+      pantallaAmor.close();
+    });
   </script>
 </body>
 </html>
-
-
