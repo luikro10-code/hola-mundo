@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Luisi</title>
+  <title>Para Abril</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -15,6 +15,13 @@
       place-items: center;
       background: linear-gradient(135deg, #fff1f5, #fce4ec);
       font-family: "Poppins", sans-serif;
+      text-align: center;
+      padding: 1rem;
+      box-sizing: border-box;
+    }
+
+    main {
+      max-width: 42rem;
     }
 
     h1 {
@@ -22,14 +29,75 @@
       color: #ad1457;
       font-size: clamp(2.5rem, 8vw, 5rem);
       font-weight: 700;
-      text-align: center;
+      margin: 0 0 1.5rem;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.9rem 2rem;
+      background: #d81b60;
+      color: #fff;
+      font: inherit;
+      font-size: 1.2rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 0.4rem 1rem #ad145744;
+      transition: transform 160ms ease, background-color 160ms ease;
+    }
+
+    button:hover {
+      background: #ad1457;
+      transform: translateY(-2px);
+    }
+
+    button:focus-visible {
+      outline: 3px solid #880e4f;
+      outline-offset: 4px;
+    }
+
+    #abrazo {
+      min-height: 2rem;
+      margin: 1.5rem 0 0;
+      color: #880e4f;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    #abrazo.visible {
+      animation: aparecer 500ms ease both;
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>Hola mundo para la luisi bella</h1>
+  <main>
+    <h1>Hola Abril te quiero mucho</h1>
+    <button id="boton-abrazo" type="button">Te quiero</button>
+    <p id="abrazo" aria-live="polite"></p>
+  </main>
+  <script>
+    const boton = document.querySelector("#boton-abrazo");
+    const mensajeAbrazo = document.querySelector("#abrazo");
+
+    boton.addEventListener("click", () => {
+      mensajeAbrazo.textContent = "¡Te mando un abrazo enorme! 🤗";
+      mensajeAbrazo.classList.remove("visible");
+      void mensajeAbrazo.offsetWidth;
+      mensajeAbrazo.classList.add("visible");
+    });
+  </script>
 </body>
 </html>
-
 
 
