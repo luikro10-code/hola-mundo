@@ -87,8 +87,105 @@
     }
 
     #pantalla-amor h2 {
-      margin: 0 0 1.5rem;
+      margin: 0 0 0.5rem;
       font-size: clamp(3rem, 12vw, 7rem);
+    }
+
+    #boton-foto-seungmin {
+      display: block;
+      margin: 0 auto 0.75rem;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
+      transition: none;
+      cursor: pointer;
+    }
+
+    #boton-foto-seungmin:hover {
+      background: transparent;
+      transform: none;
+    }
+
+    #boton-foto-seungmin:focus-visible {
+      outline: 3px solid #880e4f;
+      outline-offset: 4px;
+    }
+
+    #foto-seungmin {
+      display: block;
+      width: min(20rem, 80vw);
+      max-height: 55vh;
+      object-fit: cover;
+    }
+
+    #mensaje-seungmin {
+      margin: 0 auto 1rem;
+      color: #880e4f;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    #mensaje-seungmin.visible {
+      animation: aparecer 500ms ease both;
+    }
+
+    .gatito {
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      z-index: 1;
+      display: grid;
+      justify-items: center;
+      gap: 0.5rem;
+    }
+
+    .boton-gatito {
+      position: relative;
+      width: 4rem;
+      height: 4rem;
+      padding: 0;
+      border: 2px solid #fff;
+      background: #f8bbd0;
+      font-size: 2rem;
+      overflow: visible;
+    }
+
+    .boton-gatito:hover {
+      background: #f48fb1;
+    }
+
+    #mensaje-gatito {
+      margin: 0;
+      padding: 0.5rem 0.75rem;
+      border-radius: 1rem;
+      background: #fff;
+      color: #880e4f;
+      font-size: 0.9rem;
+      box-shadow: 0 0.2rem 0.8rem #ad145733;
+      opacity: 0;
+      transform: translateY(0.5rem);
+      transition: opacity 160ms ease, transform 160ms ease;
+      pointer-events: none;
+    }
+
+    #mensaje-gatito.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gatito.cariciado .boton-gatito {
+      animation: ronroneo 400ms ease;
+    }
+
+    .corazon-volador {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      pointer-events: none;
+      animation: volar-corazon 900ms ease-out forwards;
     }
 
     #abrazo {
@@ -113,6 +210,29 @@
         transform: scale(1);
       }
     }
+
+    @keyframes ronroneo {
+      0%, 100% {
+        transform: rotate(0) scale(1);
+      }
+      35% {
+        transform: rotate(-12deg) scale(1.15);
+      }
+      70% {
+        transform: rotate(12deg) scale(1.15);
+      }
+    }
+
+    @keyframes volar-corazon {
+      from {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(0.6);
+      }
+      to {
+        opacity: 0;
+        transform: translate(calc(-50% + var(--desplazamiento-x)), calc(-50% + var(--desplazamiento-y))) scale(1.4);
+      }
+    }
   </style>
 </head>
 <body>
@@ -125,15 +245,28 @@
   <dialog id="pantalla-amor" aria-labelledby="titulo-seungmin">
     <div>
       <h2 id="titulo-seungmin">Seungmin</h2>
+      <button id="boton-foto-seungmin" type="button" aria-label="Mostrar un mensaje bonito">
+        <img id="foto-seungmin" src="Seungmin.png" alt="">
+      </button>
+      <p id="mensaje-seungmin" aria-live="polite"></p>
       <button id="cerrar-pantalla" type="button">Volver</button>
     </div>
   </dialog>
+  <div class="gatito">
+    <p id="mensaje-gatito" aria-live="polite"></p>
+    <button class="boton-gatito" id="boton-gatito" type="button" aria-label="Darle cariño al gatito">😺</button>
+  </div>
   <script>
     const boton = document.querySelector("#boton-abrazo");
     const mensajeAbrazo = document.querySelector("#abrazo");
     const botonAmor = document.querySelector("#boton-amor");
     const pantallaAmor = document.querySelector("#pantalla-amor");
     const botonCerrarPantalla = document.querySelector("#cerrar-pantalla");
+    const botonFotoSeungmin = document.querySelector("#boton-foto-seungmin");
+    const mensajeSeungmin = document.querySelector("#mensaje-seungmin");
+    const gatito = document.querySelector(".gatito");
+    const botonGatito = document.querySelector("#boton-gatito");
+    const mensajeGatito = document.querySelector("#mensaje-gatito");
 
     boton.addEventListener("click", () => {
       mensajeAbrazo.textContent = "¡Te mando un abrazo enorme! 🤗";
@@ -148,6 +281,32 @@
 
     botonCerrarPantalla.addEventListener("click", () => {
       pantallaAmor.close();
+    });
+
+    botonFotoSeungmin.addEventListener("click", () => {
+      mensajeSeungmin.textContent = "Eres una personita muy especial y mereces todo lo bonito del mundo 💖";
+      mensajeSeungmin.classList.add("visible");
+    });
+
+    botonGatito.addEventListener("click", () => {
+      mensajeGatito.textContent = "¡Miau! Gracias por los mimos 💕";
+      mensajeGatito.classList.add("visible");
+      gatito.classList.remove("cariciado");
+      void botonGatito.offsetWidth;
+      gatito.classList.add("cariciado");
+
+      const corazones = ["💕", "💖", "💗", "💞", "💘"];
+      corazones.forEach((corazon, indice) => {
+        const elemento = document.createElement("span");
+        const angulo = (indice / corazones.length) * Math.PI * 2;
+        elemento.className = "corazon-volador";
+        elemento.setAttribute("aria-hidden", "true");
+        elemento.textContent = corazon;
+        elemento.style.setProperty("--desplazamiento-x", `${Math.cos(angulo) * 55}px`);
+        elemento.style.setProperty("--desplazamiento-y", `${Math.sin(angulo) * 55 - 25}px`);
+        botonGatito.append(elemento);
+        elemento.addEventListener("animationend", () => elemento.remove(), { once: true });
+      });
     });
   </script>
 </body>
