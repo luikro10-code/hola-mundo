@@ -2,310 +2,1134 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Para Abril</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8fb">
+  <meta name="description" content="Un regalito hecho con mucho cariño para una amiga muy especial.">
+  <title>Un regalito para Abril 💗</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      min-height: 100vh;
-      margin: 0;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, #fff1f5, #fce4ec);
-      font-family: "Poppins", sans-serif;
-      text-align: center;
-      padding: 1rem;
+    :root {
+      color-scheme: light;
+      --ink: #49384b;
+      --muted: #8c778c;
+      --pink: #d96d9b;
+      --pink-dark: #b94f7d;
+      --pink-pale: #fff0f6;
+      --lilac: #a891cf;
+      --lilac-pale: #f3effb;
+      --paper: #fffdfd;
+      --line: #f0e2ec;
+      --shadow: 0 1.25rem 4rem #9d6d8c1c;
+      font-family: "DM Sans", sans-serif;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+    }
+
+    * {
       box-sizing: border-box;
     }
 
-    main {
-      max-width: 42rem;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 5rem;
     }
 
-    h1 {
-      padding: 1rem;
-      color: #ad1457;
-      font-size: clamp(2.5rem, 8vw, 5rem);
-      font-weight: 700;
-      margin: 0 0 1.5rem;
+    body {
+      min-width: 320px;
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      color: var(--ink);
+      background:
+        radial-gradient(ellipse at 8% 13%, #f9e9f4 0, transparent 26rem),
+        radial-gradient(ellipse at 92% 44%, #f1ebfb 0, transparent 27rem),
+        #fffafd;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
     }
 
     button {
-      border: 0;
-      border-radius: 999px;
-      padding: 0.9rem 2rem;
-      background: #d81b60;
-      color: #fff;
+      color: inherit;
       font: inherit;
-      font-size: 1.2rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 0.4rem 1rem #ad145744;
-      transition: transform 160ms ease, background-color 160ms ease;
     }
 
-    button:hover {
-      background: #ad1457;
+    button:focus-visible,
+    a:focus-visible {
+      outline: 3px solid #a65e98;
+      outline-offset: 4px;
+    }
+
+    .intro {
+      position: fixed;
+      z-index: 5;
+      inset: 0;
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      overflow: hidden;
+      padding: 1.5rem;
+      background:
+        radial-gradient(ellipse at 50% 45%, #fff 0, #fff8fc 44%, transparent 74%),
+        linear-gradient(145deg, #fff2f7, #f2edfc);
+      transition: opacity 700ms ease, visibility 700ms ease;
+    }
+
+    .intro.is-gone {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .intro-card {
+      position: relative;
+      width: min(100%, 38rem);
+      padding: clamp(2rem, 7vw, 4.5rem) clamp(1.4rem, 6vw, 4rem);
+      border: 1px solid #fff;
+      border-radius: 2rem;
+      background: #ffffffc9;
+      box-shadow: 0 1.5rem 6rem #a978a521;
+      text-align: center;
+      animation: entrar 900ms cubic-bezier(.2, .8, .2, 1) both;
+      backdrop-filter: blur(12px);
+    }
+
+    .intro-sticker {
+      display: grid;
+      width: 5rem;
+      height: 5rem;
+      margin: 0 auto 1.5rem;
+      border: 1px solid #f4d9e8;
+      border-radius: 1.65rem;
+      background: linear-gradient(145deg, #fff3f8, #f5effb);
+      font-size: 2.3rem;
+      place-items: center;
+      transform: rotate(-8deg);
+    }
+
+    .eyebrow {
+      margin: 0 0 0.7rem;
+      color: var(--pink-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      overflow-wrap: anywhere;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .intro h1 {
+      margin: 0 auto 1rem;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .intro-copy {
+      max-width: 27rem;
+      margin: 0 auto 1.8rem;
+      color: var(--muted);
+    }
+
+    .primary-button,
+    .soft-button,
+    .music-button,
+    .hug-button {
+      display: inline-flex;
+      min-height: 3.1rem;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
+      border: 0;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.93rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+    }
+
+    .primary-button {
+      padding: 0.8rem 1.55rem;
+      background: var(--pink);
+      box-shadow: 0 0.65rem 1.6rem #d96d9b40;
+      color: white;
+    }
+
+    .primary-button:hover,
+    .hug-button:hover {
+      background: var(--pink-dark);
+      box-shadow: 0 0.8rem 1.8rem #b94f7d35;
       transform: translateY(-2px);
     }
 
-    button:focus-visible {
-      outline: 3px solid #880e4f;
-      outline-offset: 4px;
+    .floating-doodle {
+      position: absolute;
+      z-index: -1;
+      color: #d989b4;
+      font-size: clamp(1.2rem, 4vw, 2rem);
+      opacity: 0.55;
+      pointer-events: none;
+      animation: flotar 5s ease-in-out infinite;
     }
 
-    #boton-amor {
-      margin-top: 0.5rem;
+    .floating-doodle:nth-of-type(1) { top: 12%; left: 13%; }
+    .floating-doodle:nth-of-type(2) { top: 19%; right: 14%; animation-delay: -1s; }
+    .floating-doodle:nth-of-type(3) { bottom: 15%; left: 17%; animation-delay: -2.4s; }
+    .floating-doodle:nth-of-type(4) { right: 13%; bottom: 17%; animation-delay: -3.2s; }
+
+    .site-header {
+      position: sticky;
+      z-index: 3;
+      top: 0;
+      display: flex;
+      min-height: 4.25rem;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.65rem max(1.25rem, calc((100vw - 70rem) / 2));
+      border-bottom: 1px solid #f0e2ecb8;
+      background: #fffafdde;
+      backdrop-filter: blur(14px);
     }
 
-    #pantalla-amor {
+    .brand {
+      color: var(--pink-dark);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.12rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .header-tools {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 1rem;
+    }
+
+    .music-button {
+      min-height: 2.6rem;
+      padding: 0.5rem 0.95rem;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--pink-dark);
+      font-size: 0.82rem;
+    }
+
+    .music-button:hover,
+    .soft-button:hover {
+      background: var(--pink-pale);
+      transform: translateY(-1px);
+    }
+
+    .music-player {
+      width: min(100%, 22rem);
+      padding: 0.6rem;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: white;
+      box-shadow: var(--shadow);
+    }
+
+    .music-player iframe {
+      display: block;
       width: 100%;
-      height: 100%;
-      max-width: none;
-      max-height: none;
-      margin: 0;
-      padding: 1.5rem;
+      height: 9.5rem;
       border: 0;
-      box-sizing: border-box;
-      background: linear-gradient(135deg, #fff1f5, #fce4ec);
-      color: #ad1457;
+      border-radius: 0.65rem;
+    }
+
+    .music-player p {
+      margin: 0.35rem 0 0.1rem;
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.4;
+    }
+
+    .music-player a {
+      display: inline-block;
+      margin: 0.45rem 0.25rem 0.1rem;
+      color: var(--pink-dark);
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: clamp(0.65rem, 2vw, 1.35rem);
+    }
+
+    .site-nav a {
+      color: var(--muted);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 160ms ease;
+    }
+
+    .site-nav a:hover {
+      color: var(--pink-dark);
+    }
+
+    main {
+      width: min(100% - 2rem, 70rem);
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      min-height: min(47rem, calc(100svh - 4rem));
+      align-content: center;
+      justify-items: center;
+      padding: 5rem 1rem 6rem;
+      text-align: center;
+    }
+
+    .hero::before,
+    .hero::after {
+      position: absolute;
+      z-index: -1;
+      width: 14rem;
+      height: 14rem;
+      border: 1px solid #f4dce9;
+      border-radius: 50%;
+      content: "";
+      opacity: 0.5;
+    }
+
+    .hero::before {
+      top: 17%;
+      left: 4%;
+      width: 9rem;
+      height: 9rem;
+    }
+
+    .hero::after {
+      right: 2%;
+      bottom: 14%;
+    }
+
+    .hero-heart {
+      display: grid;
+      width: 4.2rem;
+      height: 4.2rem;
+      margin-bottom: 1.4rem;
+      border: 1px solid #f4dce9;
+      border-radius: 1.5rem;
+      background: #fff;
+      box-shadow: 0 0.8rem 2rem #ad78971a;
+      font-size: 1.8rem;
+      place-items: center;
+      animation: latido 2.6s ease-in-out infinite;
+      transform: rotate(6deg);
+    }
+
+    .hero h1 {
+      max-width: 53rem;
+      margin: 0 0 1.1rem;
+      font-size: clamp(3rem, 9vw, 6.4rem);
+      letter-spacing: -0.055em;
+    }
+
+    .script-name {
+      color: var(--pink);
+      font-style: italic;
+    }
+
+    .hero-copy {
+      max-width: 34rem;
+      margin: 0 0 1.8rem;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+    }
+
+    .soft-button {
+      padding: 0.7rem 1.2rem;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--pink-dark);
+    }
+
+    .friendship-counter {
+      margin: 1.6rem 0 0;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .friendship-counter strong {
+      color: var(--pink-dark);
+    }
+
+    .section {
+      padding: clamp(4rem, 9vw, 7rem) 0;
+      scroll-margin-top: 4rem;
+    }
+
+    .section-heading {
+      max-width: 39rem;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      margin: 0 0 0.8rem;
+      font-size: clamp(2.2rem, 6vw, 3.6rem);
+      letter-spacing: -0.035em;
+    }
+
+    .section-heading > p:last-child {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .letter-card {
+      position: relative;
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: clamp(1.5rem, 6vw, 3.5rem);
+      border: 1px solid #f1e2eb;
+      border-radius: 1.6rem;
+      background:
+        linear-gradient(#fffdfd, #fffdfd) padding-box,
+        repeating-linear-gradient(transparent 0 2.65rem, #f7eaf1 2.65rem 2.72rem);
+      box-shadow: var(--shadow);
+    }
+
+    .letter-card::before {
+      position: absolute;
+      top: -1.1rem;
+      left: 50%;
+      display: grid;
+      width: 2.4rem;
+      height: 2.4rem;
+      border: 1px solid #f1deea;
+      border-radius: 50%;
+      background: #fff8fb;
+      content: "♡";
+      color: var(--pink);
+      font-size: 1.4rem;
+      place-items: center;
+      transform: translateX(-50%);
+    }
+
+    .letter-card p {
+      margin: 0 0 1.1rem;
+    }
+
+    .letter-card .letter-signoff {
+      margin: 1.8rem 0 0;
+      color: var(--pink-dark);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.4rem;
+      font-style: italic;
+    }
+
+    .photo-grid,
+    .memory-grid,
+    .reason-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+    }
+
+    .photo-card {
+      min-width: 0;
+      padding: 0.75rem 0.75rem 1rem;
+      border: 1px solid #f0e2ec;
+      border-radius: 1.15rem;
+      background: #fff;
+      box-shadow: 0 0.8rem 2rem #9d6d8c12;
+      transition: transform 220ms ease, box-shadow 220ms ease;
+    }
+
+    .photo-card:nth-child(3n + 2) {
+      transform: translateY(1rem) rotate(1deg);
+    }
+
+    .photo-card:hover {
+      z-index: 1;
+      box-shadow: var(--shadow);
+      transform: translateY(-5px) rotate(0);
+    }
+
+    .photo-frame {
+      display: grid;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      background:
+        radial-gradient(circle at 80% 20%, #fff8 0 0.3rem, transparent 0.35rem),
+        linear-gradient(140deg, #f9e8f1, #eee8fa);
+      color: var(--pink-dark);
       place-items: center;
     }
 
-    #pantalla-amor:not([open]) {
-      display: none;
-    }
-
-    #pantalla-amor[open] {
+    .photo-placeholder {
       display: grid;
+      justify-items: center;
+      padding: 1rem;
+      text-align: center;
     }
 
-    #pantalla-amor::backdrop {
-      background: #880e4f;
+    .photo-placeholder span {
+      margin-bottom: 0.35rem;
+      font-size: 2rem;
     }
 
-    #pantalla-amor h2 {
-      margin: 0 0 0.5rem;
-      font-size: clamp(3rem, 12vw, 7rem);
+    .photo-placeholder strong {
+      font-size: 0.9rem;
     }
 
-    #boton-foto-seungmin {
-      display: block;
-      margin: 0 auto 0.75rem;
-      padding: 0;
-      border: 0;
-      border-radius: 0;
-      background: transparent;
-      box-shadow: none;
-      transition: none;
-      cursor: pointer;
+    .photo-placeholder small {
+      max-width: 13rem;
+      color: var(--muted);
+      font-size: 0.72rem;
+      line-height: 1.45;
     }
 
-    #boton-foto-seungmin:hover {
-      background: transparent;
-      transform: none;
-    }
-
-    #boton-foto-seungmin:focus-visible {
-      outline: 3px solid #880e4f;
-      outline-offset: 4px;
-    }
-
-    #foto-seungmin {
-      display: block;
-      width: min(20rem, 80vw);
-      max-height: 55vh;
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
       object-fit: cover;
     }
 
-    #mensaje-seungmin {
-      margin: 0 auto 1rem;
-      color: #880e4f;
-      font-size: 1.2rem;
-      font-weight: 600;
+    .photo-caption {
+      margin: 0.7rem 0 0;
+      color: var(--muted);
+      font-size: 0.84rem;
+      text-align: center;
     }
 
-    #mensaje-seungmin.visible {
-      animation: aparecer 500ms ease both;
+    .soft-section {
+      border-radius: 1.6rem;
+      background: linear-gradient(120deg, #fff3f8, #f7f3fc 65%, #fff8fb);
     }
 
-    .gatito {
-      position: fixed;
-      right: 1rem;
-      bottom: 1rem;
-      z-index: 1;
+    .memory-card,
+    .reason-card {
+      padding: 1.4rem;
+      border: 1px solid #fff;
+      border-radius: 1.1rem;
+      background: #ffffffc9;
+      box-shadow: 0 0.6rem 1.8rem #9d6d8c0c;
+    }
+
+    .memory-icon {
       display: grid;
+      width: 2.8rem;
+      height: 2.8rem;
+      margin-bottom: 0.9rem;
+      border-radius: 0.9rem;
+      background: var(--pink-pale);
+      font-size: 1.2rem;
+      place-items: center;
+    }
+
+    .memory-card h3,
+    .reason-card h3 {
+      margin: 0 0 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .memory-card p,
+    .reason-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .reason-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+    }
+
+    .reason-heart {
+      flex: 0 0 auto;
+      padding-top: 0.15rem;
+      color: var(--pink);
+    }
+
+    .envelope-grid {
+      display: grid;
+      max-width: 57rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 0 auto;
+    }
+
+    .envelope {
+      display: grid;
+      min-height: 10rem;
+      align-content: center;
       justify-items: center;
       gap: 0.5rem;
-    }
-
-    .boton-gatito {
-      position: relative;
-      width: 4rem;
-      height: 4rem;
-      padding: 0;
-      border: 2px solid #fff;
-      background: #f8bbd0;
-      font-size: 2rem;
-      overflow: visible;
-    }
-
-    .boton-gatito:hover {
-      background: #f48fb1;
-    }
-
-    #mensaje-gatito {
-      margin: 0;
-      padding: 0.5rem 0.75rem;
-      border-radius: 1rem;
+      padding: 1.25rem;
+      border: 1px solid #f0e2ec;
+      border-radius: 1.2rem;
       background: #fff;
-      color: #880e4f;
+      box-shadow: 0 0.6rem 1.8rem #9d6d8c0c;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .envelope:hover {
+      background: #fff8fb;
+      box-shadow: var(--shadow);
+      transform: translateY(-4px);
+    }
+
+    .envelope-icon {
+      font-size: 2rem;
+      transition: transform 250ms ease;
+    }
+
+    .envelope:hover .envelope-icon,
+    .envelope[aria-expanded="true"] .envelope-icon {
+      transform: rotate(-8deg) scale(1.12);
+    }
+
+    .envelope strong {
       font-size: 0.9rem;
-      box-shadow: 0 0.2rem 0.8rem #ad145733;
-      opacity: 0;
-      transform: translateY(0.5rem);
-      transition: opacity 160ms ease, transform 160ms ease;
-      pointer-events: none;
     }
 
-    #mensaje-gatito.visible {
-      opacity: 1;
-      transform: translateY(0);
+    .secret-message {
+      max-width: 52rem;
+      margin: 1.2rem auto 0;
+      padding: 1.2rem 1.4rem;
+      border: 1px solid #f0e2ec;
+      border-radius: 1rem;
+      background: var(--pink-pale);
+      color: var(--pink-dark);
+      text-align: center;
+      animation: entrar 300ms ease both;
     }
 
-    .gatito.cariciado .boton-gatito {
-      animation: ronroneo 400ms ease;
+    .secret-message[hidden] {
+      display: none;
     }
 
-    .corazon-volador {
+    .closing {
+      padding-top: 2rem;
+      text-align: center;
+    }
+
+    .closing-card {
+      position: relative;
+      overflow: hidden;
+      max-width: 56rem;
+      margin: 0 auto;
+      padding: clamp(2rem, 7vw, 4rem);
+      border: 1px solid #f1e2eb;
+      border-radius: 2rem;
+      background: linear-gradient(140deg, #fff1f7, #f4effc);
+    }
+
+    .closing-card h2 {
+      margin: 0 auto 0.8rem;
+      font-size: clamp(2.4rem, 7vw, 4rem);
+      letter-spacing: -0.04em;
+    }
+
+    .closing-card p {
+      max-width: 31rem;
+      margin: 0 auto 1.4rem;
+      color: var(--muted);
+    }
+
+    .hug-button {
+      padding: 0.8rem 1.4rem;
+      background: var(--pink);
+      box-shadow: 0 0.65rem 1.6rem #d96d9b40;
+      color: white;
+    }
+
+    .hug-visual {
       position: absolute;
-      top: 50%;
+      bottom: 1rem;
       left: 50%;
       z-index: 1;
       pointer-events: none;
-      animation: volar-corazon 900ms ease-out forwards;
+      animation: volar 1.5s ease-out forwards;
     }
 
-    #abrazo {
-      min-height: 0;
+    .site-footer {
+      padding: 2rem 1rem 2.5rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    .site-footer p {
       margin: 0;
-      color: #880e4f;
-      font-size: 1.2rem;
-      font-weight: 600;
     }
 
-    #abrazo.visible {
-      animation: aparecer 500ms ease both;
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      clip-path: inset(50%);
     }
 
-    @keyframes aparecer {
-      from {
-        opacity: 0;
-        transform: scale(0.8);
+    @keyframes entrar {
+      from { opacity: 0; transform: translateY(0.8rem); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-0.7rem) rotate(8deg); }
+    }
+
+    @keyframes latido {
+      0%, 100% { transform: rotate(6deg) scale(1); }
+      50% { transform: rotate(6deg) scale(1.08); }
+    }
+
+    @keyframes volar {
+      0% { opacity: 1; transform: translate(-50%, 0) scale(0.7) rotate(-10deg); }
+      100% { opacity: 0; transform: translate(calc(-50% + var(--x)), -10rem) scale(1.35) rotate(14deg); }
+    }
+
+    @media (max-width: 760px) {
+      .site-header {
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 0.7rem 1rem;
       }
-      to {
-        opacity: 1;
-        transform: scale(1);
+
+      .header-tools {
+        width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.8rem;
+      }
+
+      .site-nav {
+        max-width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 0.55rem 1rem;
+      }
+
+      .hero {
+        min-height: 36rem;
+      }
+
+      .hero::before {
+        left: 0;
+      }
+
+      .hero::after {
+        right: 0;
+      }
+
+      .photo-grid,
+      .memory-grid,
+      .reason-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo-card:nth-child(3n + 2) {
+        transform: none;
       }
     }
 
-    @keyframes ronroneo {
-      0%, 100% {
-        transform: rotate(0) scale(1);
+    @media (max-width: 520px) {
+      main {
+        width: min(100% - 1.25rem, 70rem);
       }
-      35% {
-        transform: rotate(-12deg) scale(1.15);
+
+      .site-header {
+        position: relative;
       }
-      70% {
-        transform: rotate(12deg) scale(1.15);
+
+      .site-nav a {
+        font-size: 0.75rem;
+      }
+
+      .hero {
+        min-height: 33rem;
+        padding-top: 4rem;
+      }
+
+      .section-heading {
+        margin-bottom: 1.8rem;
+      }
+
+      .photo-grid,
+      .memory-grid,
+      .reason-grid,
+      .envelope-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card {
+        max-width: 25rem;
+        margin: 0 auto;
+      }
+
+      .envelope {
+        min-height: 7.5rem;
       }
     }
 
-    @keyframes volar-corazon {
-      from {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(0.6);
-      }
-      to {
-        opacity: 0;
-        transform: translate(calc(-50% + var(--desplazamiento-x)), calc(-50% + var(--desplazamiento-y))) scale(1.4);
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
-  <main>
-    <h1>Hola Abril te quiero mucho</h1>
-    <button id="boton-abrazo" type="button">Te quiero</button>
-    <p id="abrazo" aria-live="polite"></p>
-    <button id="boton-amor" type="button">¿Quién es el amor de Abril?</button>
-  </main>
-  <dialog id="pantalla-amor" aria-labelledby="titulo-seungmin">
-    <div>
-      <h2 id="titulo-seungmin">Seungmin</h2>
-      <button id="boton-foto-seungmin" type="button" aria-label="Mostrar un mensaje bonito">
-        <img id="foto-seungmin" src="Seungmin.png" alt="">
-      </button>
-      <p id="mensaje-seungmin" aria-live="polite"></p>
-      <button id="cerrar-pantalla" type="button">Volver</button>
+  <section class="intro" id="intro" aria-labelledby="intro-title">
+    <span class="floating-doodle" aria-hidden="true">✧</span>
+    <span class="floating-doodle" aria-hidden="true">♡</span>
+    <span class="floating-doodle" aria-hidden="true">✿</span>
+    <span class="floating-doodle" aria-hidden="true">✦</span>
+    <div class="intro-card">
+      <div class="intro-sticker" aria-hidden="true">💌</div>
+      <p class="eyebrow">un regalito hecho con amor</p>
+      <h1 id="intro-title">Tengo algo especial para vos 💗</h1>
+      <p class="intro-copy">Preparé un rinconcito lleno de recuerdos, palabras lindas y mucho cariño.</p>
+      <button class="primary-button" id="start-button" type="button">Abrir mi regalito <span aria-hidden="true">♡</span></button>
     </div>
-  </dialog>
-  <div class="gatito">
-    <p id="mensaje-gatito" aria-live="polite"></p>
-    <button class="boton-gatito" id="boton-gatito" type="button" aria-label="Darle cariño al gatito">😺</button>
+  </section>
+
+  <div id="regalo" hidden>
+    <header class="site-header">
+      <a class="brand" href="#inicio" aria-label="Volver al inicio">para vos, con amor ♡</a>
+      <div class="header-tools">
+        <nav class="site-nav" aria-label="Secciones del regalo">
+          <a href="#carta">La carta</a>
+          <a href="#fotos">Nuestros momentos</a>
+          <a href="#recuerdos">Recuerdos</a>
+          <a href="#razones">Por qué te quiero</a>
+          <a href="#sorpresas">Sorpresitas</a>
+        </nav>
+        <button class="music-button" id="music-button" type="button" aria-pressed="false">
+          <span aria-hidden="true">♫</span> <span id="music-label">Escuchar Butterfly en Spotify</span>
+        </button>
+        <div class="music-player" id="music-player" hidden>
+          <iframe
+            id="spotify-player"
+            title="Reproductor de Butterflies de Stray Kids en Spotify"
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+          <p>Si no empieza sola, tocá ▶ en el reproductor. Spotify puede pedir iniciar sesión.</p>
+          <a href="https://open.spotify.com/track/3Oi8I8awZsuJtSEOGHuOXf?si=c00e7e8a3b504bf9" target="_blank" rel="noopener noreferrer">Abrir la canción en Spotify ↗</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio" aria-labelledby="welcome-title">
+        <div class="hero-heart" aria-hidden="true">💗</div>
+        <p class="eyebrow">para mi persona favorita</p>
+        <h1 id="welcome-title">Hola, <span class="script-name" data-name></span> ✨</h1>
+        <p class="hero-copy">Hice este pequeño rincón para recordarte lo muchísimo que te quiero y lo feliz que me hace tenerte en mi vida.</p>
+        <a class="soft-button" href="#carta">Empezá por acá <span aria-hidden="true">↓</span></a>
+        <p class="friendship-counter" id="friendship-counter" hidden aria-live="polite"></p>
+      </section>
+
+      <section class="section" id="carta" aria-labelledby="letter-title">
+        <div class="section-heading">
+          <p class="eyebrow">un pedacito de mi corazón</p>
+          <h2 id="letter-title">Una cartita para vos</h2>
+          <p>Hay cosas que nunca me canso de decirte.</p>
+        </div>
+        <article class="letter-card">
+          <div id="letter-copy"></div>
+          <p class="letter-signoff">Con todo mi cariño, siempre ♡</p>
+        </article>
+      </section>
+
+      <section class="section" id="fotos" aria-labelledby="photos-title">
+        <div class="section-heading">
+          <p class="eyebrow">momentitos que guardo</p>
+          <h2 id="photos-title">Nuestro álbum bonito</h2>
+          <p>Acá van esas fotos que con solo mirarlas me sacan una sonrisa.</p>
+        </div>
+        <div class="photo-grid" id="photo-grid"></div>
+      </section>
+
+      <section class="section soft-section" id="recuerdos" aria-labelledby="memories-title">
+        <div class="section-heading">
+          <p class="eyebrow">de esas historias nuestras</p>
+          <h2 id="memories-title">Recuerdos que me hacen reír</h2>
+          <p>Algunos momentos merecen ser contados una y otra vez.</p>
+        </div>
+        <div class="memory-grid" id="memory-grid"></div>
+      </section>
+
+      <section class="section" id="razones" aria-labelledby="reasons-title">
+        <div class="section-heading">
+          <p class="eyebrow">podría hacer una lista infinita</p>
+          <h2 id="reasons-title">Razones por las que sos tan especial</h2>
+          <p>Pero por ahora, acá van algunas de mis favoritas.</p>
+        </div>
+        <div class="reason-grid" id="reason-grid"></div>
+      </section>
+
+      <section class="section soft-section" id="sorpresas" aria-labelledby="surprises-title">
+        <div class="section-heading">
+          <p class="eyebrow">psst... hay mensajitos escondidos</p>
+          <h2 id="surprises-title">Abrí una sorpresita</h2>
+          <p>Elegí un sobre cuando necesites una dosis extra de cariño.</p>
+        </div>
+        <div class="envelope-grid" id="envelope-grid"></div>
+        <p class="secret-message" id="secret-message" aria-live="polite" hidden></p>
+      </section>
+
+      <section class="section closing" aria-labelledby="closing-title">
+        <div class="closing-card">
+          <p class="eyebrow">y por si hoy no te lo dije...</p>
+          <h2 id="closing-title">Te quiero un montón, <span data-name></span> 💗</h2>
+          <p>Gracias por ser vos, por compartir tu mundo conmigo y por hacer que tantos días sean más lindos.</p>
+          <button class="hug-button" id="hug-button" type="button">Mandarte un abrazo <span aria-hidden="true">♡</span></button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Hecho con mucho amor, especialmente para <span data-name></span> ✨</p>
+    </footer>
+    <p class="sr-only" id="music-status" aria-live="polite"></p>
   </div>
+
   <script>
-    const boton = document.querySelector("#boton-abrazo");
-    const mensajeAbrazo = document.querySelector("#abrazo");
-    const botonAmor = document.querySelector("#boton-amor");
-    const pantallaAmor = document.querySelector("#pantalla-amor");
-    const botonCerrarPantalla = document.querySelector("#cerrar-pantalla");
-    const botonFotoSeungmin = document.querySelector("#boton-foto-seungmin");
-    const mensajeSeungmin = document.querySelector("#mensaje-seungmin");
-    const gatito = document.querySelector(".gatito");
-    const botonGatito = document.querySelector("#boton-gatito");
-    const mensajeGatito = document.querySelector("#mensaje-gatito");
+    // Personalizá este objeto para cambiar el nombre, los textos, las fotos y la música.
+    const regalo = {
+      amiga: "Abril",
+      fechaAmistad: "",
+      musicaSpotify: "https://open.spotify.com/embed/track/3Oi8I8awZsuJtSEOGHuOXf?utm_source=generator&theme=0&autoplay=1",
+      carta: [
+        "Quería dejarte estas palabras para que puedas volver a ellas cuando quieras recordar cuánto te quiero.",
+        "Gracias por estar, por escucharme, por hacerme reír incluso en los días medio grises y por ser esa persona con la que puedo ser yo, sin vueltas. Tu amistad es de las cosas más lindas que me pasaron.",
+        "Ojalá nunca te olvides de lo especial que sos. Te merecés todo lo bueno, toda la ternura y todas las cosas lindas del mundo. Yo voy a estar acá para celebrar tus alegrías, acompañarte en lo que venga y seguir juntando recuerdos con vos."
+      ],
+      fotos: [
+        { src: "", alt: "Un recuerdo lindo juntas", texto: "Ese día que no queríamos que terminara ✨" },
+        { src: "", alt: "Un momento divertido de nuestra amistad", texto: "Nosotras, siendo nosotras 💕" },
+        { src: "", alt: "Una foto de un plan especial", texto: "Un plan simple, un recuerdo enorme 🌷" }
+      ],
+      recuerdos: [
+        { icono: "😂", titulo: "La risa que no podíamos parar", texto: "Esa vez que nos tentamos por cualquier cosa y ya no pudimos volver a hablar en serio." },
+        { icono: "☕", titulo: "Nuestros planes improvisados", texto: "Porque los mejores días muchas veces empiezan con un «¿y si nos vemos?»." },
+        { icono: "🫶", titulo: "Estar sin tener que explicar", texto: "Esos momentos en que con una mirada ya sabemos lo que la otra está pensando." }
+      ],
+      razones: [
+        "Tenés una forma única de hacer sentir acompañada a la gente que querés.",
+        "Tu risa es contagiosa y siempre mejora cualquier día.",
+        "Puedo ser completamente yo cuando estoy con vos.",
+        "Sabés escuchar y también encontrar las palabras justas.",
+        "Hacés que hasta los planes más simples se vuelvan especiales.",
+        "Sos una persona hermosa, por dentro y por fuera."
+      ],
+      sorpresas: [
+        { titulo: "Para un día difícil", mensaje: "Respirá, hermosa. No tenés que poder con todo hoy. Estoy acá para vos, siempre. 💗" },
+        { titulo: "Por si necesitabas escucharlo", mensaje: "Sos muchísimo más increíble de lo que a veces te das cuenta. No lo olvides nunca. ✨" },
+        { titulo: "Un abrazo apretado", mensaje: "Te mando el abrazo más largo del mundo, con apretón extra y todo. 🫂" }
+      ]
+    };
 
-    boton.addEventListener("click", () => {
-      mensajeAbrazo.textContent = "¡Te mando un abrazo enorme! 🤗";
-      mensajeAbrazo.classList.remove("visible");
-      void mensajeAbrazo.offsetWidth;
-      mensajeAbrazo.classList.add("visible");
+    const inicio = document.querySelector("#intro");
+    const regaloCompleto = document.querySelector("#regalo");
+    const botonInicio = document.querySelector("#start-button");
+    const botonMusica = document.querySelector("#music-button");
+    const etiquetaMusica = document.querySelector("#music-label");
+    const estadoMusica = document.querySelector("#music-status");
+    const reproductorMusica = document.querySelector("#music-player");
+    const reproductorSpotify = document.querySelector("#spotify-player");
+
+    document.querySelectorAll("[data-name]").forEach((elemento) => {
+      elemento.textContent = regalo.amiga;
+    });
+    document.title = `Un regalito para ${regalo.amiga} 💗`;
+
+    document.querySelector("#letter-copy").replaceChildren(
+      ...regalo.carta.map((texto) => {
+        const parrafo = document.createElement("p");
+        parrafo.textContent = texto.replaceAll("{nombre}", regalo.amiga);
+        return parrafo;
+      })
+    );
+
+    const grillaFotos = document.querySelector("#photo-grid");
+    regalo.fotos.forEach((foto) => {
+      const tarjeta = document.createElement("article");
+      tarjeta.className = "photo-card";
+      const marco = document.createElement("div");
+      marco.className = "photo-frame";
+
+      if (foto.src) {
+        const imagen = document.createElement("img");
+        imagen.src = foto.src;
+        imagen.alt = foto.alt;
+        marco.append(imagen);
+      } else {
+        const espacio = document.createElement("div");
+        espacio.className = "photo-placeholder";
+        espacio.innerHTML = "<span aria-hidden=\"true\">📷</span><strong>Tu foto aquí</strong><small>Agregá la ruta de una foto en la lista <code>fotos</code>.</small>";
+        marco.append(espacio);
+      }
+
+      const descripcion = document.createElement("p");
+      descripcion.className = "photo-caption";
+      descripcion.textContent = foto.texto;
+      tarjeta.append(marco, descripcion);
+      grillaFotos.append(tarjeta);
     });
 
-    botonAmor.addEventListener("click", () => {
-      pantallaAmor.showModal();
+    const grillaRecuerdos = document.querySelector("#memory-grid");
+    regalo.recuerdos.forEach((recuerdo) => {
+      const tarjeta = document.createElement("article");
+      tarjeta.className = "memory-card";
+      const icono = document.createElement("span");
+      icono.className = "memory-icon";
+      icono.setAttribute("aria-hidden", "true");
+      icono.textContent = recuerdo.icono;
+      const titulo = document.createElement("h3");
+      titulo.textContent = recuerdo.titulo;
+      const texto = document.createElement("p");
+      texto.textContent = recuerdo.texto;
+      tarjeta.append(icono, titulo, texto);
+      grillaRecuerdos.append(tarjeta);
     });
 
-    botonCerrarPantalla.addEventListener("click", () => {
-      pantallaAmor.close();
+    const grillaRazones = document.querySelector("#reason-grid");
+    regalo.razones.forEach((razon) => {
+      const tarjeta = document.createElement("article");
+      tarjeta.className = "reason-card";
+      const corazon = document.createElement("span");
+      corazon.className = "reason-heart";
+      corazon.setAttribute("aria-hidden", "true");
+      corazon.textContent = "♡";
+      const texto = document.createElement("p");
+      texto.textContent = razon;
+      tarjeta.append(corazon, texto);
+      grillaRazones.append(tarjeta);
     });
 
-    botonFotoSeungmin.addEventListener("click", () => {
-      mensajeSeungmin.textContent = "Eres una personita muy especial y mereces todo lo bonito del mundo 💖";
-      mensajeSeungmin.classList.add("visible");
+    const grillaSobres = document.querySelector("#envelope-grid");
+    const mensajeSecreto = document.querySelector("#secret-message");
+    regalo.sorpresas.forEach((sorpresa, indice) => {
+      const sobre = document.createElement("button");
+      sobre.className = "envelope";
+      sobre.type = "button";
+      sobre.setAttribute("aria-expanded", "false");
+      sobre.setAttribute("aria-controls", "secret-message");
+      const icono = document.createElement("span");
+      icono.className = "envelope-icon";
+      icono.setAttribute("aria-hidden", "true");
+      icono.textContent = "💌";
+      const titulo = document.createElement("strong");
+      titulo.textContent = sorpresa.titulo;
+      sobre.append(icono, titulo);
+      sobre.addEventListener("click", () => {
+        const yaAbierto = sobre.getAttribute("aria-expanded") === "true";
+        grillaSobres.querySelectorAll(".envelope").forEach((otroSobre) => {
+          otroSobre.setAttribute("aria-expanded", "false");
+        });
+        sobre.setAttribute("aria-expanded", String(!yaAbierto));
+        mensajeSecreto.hidden = yaAbierto;
+        mensajeSecreto.textContent = yaAbierto
+          ? ""
+          : sorpresa.mensaje.replaceAll("{nombre}", regalo.amiga);
+      });
+      sobre.setAttribute("aria-label", `Abrir sorpresa ${indice + 1}: ${sorpresa.titulo}`);
+      grillaSobres.append(sobre);
     });
 
-    botonGatito.addEventListener("click", () => {
-      mensajeGatito.textContent = "¡Miau! Gracias por los mimos 💕";
-      mensajeGatito.classList.add("visible");
-      gatito.classList.remove("cariciado");
-      void botonGatito.offsetWidth;
-      gatito.classList.add("cariciado");
+    botonInicio.addEventListener("click", () => {
+      regaloCompleto.hidden = false;
+      inicio.classList.add("is-gone");
+      reproductorMusica.hidden = false;
+      reproductorSpotify.src = regalo.musicaSpotify;
+      botonMusica.setAttribute("aria-expanded", "true");
+      botonMusica.setAttribute("aria-pressed", "true");
+      etiquetaMusica.textContent = "Cerrar reproductor de Spotify";
+      estadoMusica.textContent = "Cargando Butterflies de Stray Kids. Si Spotify no empieza sola, tocá reproducir en el reproductor.";
+      document.querySelector("#inicio").setAttribute("tabindex", "-1");
+      document.querySelector("#inicio").focus({ preventScroll: true });
+    });
 
-      const corazones = ["💕", "💖", "💗", "💞", "💘"];
-      corazones.forEach((corazon, indice) => {
-        const elemento = document.createElement("span");
-        const angulo = (indice / corazones.length) * Math.PI * 2;
-        elemento.className = "corazon-volador";
-        elemento.setAttribute("aria-hidden", "true");
-        elemento.textContent = corazon;
-        elemento.style.setProperty("--desplazamiento-x", `${Math.cos(angulo) * 55}px`);
-        elemento.style.setProperty("--desplazamiento-y", `${Math.sin(angulo) * 55 - 25}px`);
-        botonGatito.append(elemento);
-        elemento.addEventListener("animationend", () => elemento.remove(), { once: true });
+    if (regalo.fechaAmistad) {
+      const fecha = new Date(`${regalo.fechaAmistad}T00:00:00`);
+      const contador = document.querySelector("#friendship-counter");
+      if (!Number.isNaN(fecha.getTime()) && fecha <= new Date()) {
+        const actualizarContador = () => {
+          const dias = Math.floor((Date.now() - fecha.getTime()) / 86_400_000);
+          contador.innerHTML = `Compartiendo aventuras hace <strong>${dias.toLocaleString("es-AR")} días</strong> ♡`;
+        };
+        contador.hidden = false;
+        actualizarContador();
+        window.setInterval(actualizarContador, 60_000);
+      }
+    }
+
+    botonMusica.setAttribute("aria-expanded", "false");
+    botonMusica.setAttribute("aria-controls", "music-player");
+    botonMusica.addEventListener("click", () => {
+      const cerrarReproductor = !reproductorMusica.hidden;
+      reproductorMusica.hidden = cerrarReproductor;
+      botonMusica.setAttribute("aria-expanded", String(!cerrarReproductor));
+      botonMusica.setAttribute("aria-pressed", String(!cerrarReproductor));
+
+      if (cerrarReproductor) {
+        reproductorSpotify.removeAttribute("src");
+        etiquetaMusica.textContent = "Escuchar Butterflies en Spotify";
+        estadoMusica.textContent = "Reproductor de Spotify cerrado.";
+      } else {
+        reproductorSpotify.src = regalo.musicaSpotify;
+        etiquetaMusica.textContent = "Cerrar reproductor de Spotify";
+        estadoMusica.textContent = "Cargando Butterflies de Stray Kids. Si Spotify no empieza sola, tocá reproducir en el reproductor.";
+      }
+    });
+
+    document.querySelector("#hug-button").addEventListener("click", (evento) => {
+      const botonAbrazo = evento.currentTarget;
+      const detalles = ["💗", "✨", "🌷", "💕", "✧", "💖"];
+      detalles.forEach((detalle, indice) => {
+        const corazon = document.createElement("span");
+        corazon.className = "hug-visual";
+        corazon.setAttribute("aria-hidden", "true");
+        corazon.textContent = detalle;
+        corazon.style.setProperty("--x", `${(indice - 2.5) * 2.7}rem`);
+        botonAbrazo.append(corazon);
+        corazon.addEventListener("animationend", () => corazon.remove(), { once: true });
       });
     });
   </script>
